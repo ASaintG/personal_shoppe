@@ -1,0 +1,200 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+:root {
+    --primary: #7D858C; ;
+    --primary-hover: #2B7B8C;                
+    --secondary: #BFBBB8;
+    --secondary-hover: #F2F2F2;
+    --aura: #0D0D0D;
+    --background: #4c92d7;
+    --navbar-height: 3.75rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Mulish, sans-serif;
+}
+
+.background {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: #a7adba;
+    opacity: 0.5;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.menu__wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    z-index: 2;
+}
+
+.menu__bar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-right: 1.5rem;
+    gap: 2rem;
+    background-color: var(--background);
+    height: 3.75rem;
+}
+@media (max-width: 600px) {
+    .menu__bar {
+        justify-content: space-between; /* Para pantallas pequeñas, logo y menú a los costados */
+        padding: 0 1rem; /* Espacio en los costados para los iconos */
+    }
+    .navigation {
+        display: none; /* Esconder el menú en pantallas pequeñas */
+    }
+    .menu-icon {
+        display: block;
+    }
+}
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+}
+.menu__bar a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease-out;
+}
+
+.menu__bar a:hover {
+    color: var(--primary); /* Mantiene el color al pasar el ratón */
+    transform: scale(1.1);
+}
+.menu__bar p {
+    color: white; /* Color inicial del texto */
+    margin: 0; /* Elimina el margen por defecto del párrafo */
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+}
+
+.menu__bar p::after {
+    content: ''; /* Crea un pseudo-elemento vacío */
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Ajusta la posición de la línea */
+    width: 0;
+    height: 2px; /* Altura de la línea */
+    background: linear-gradient(90deg, var(--background), var(--primary), var(--background));
+    transform-origin: bottom center;
+    transition: transform 0.3s ease-out; /* Transición suave */
+  
+}
+
+.menu__bar p:hover::after {
+    width: 100%; /* Ancho de la línea al pasar el ratón */
+    
+}
+
+.navigation {    
+    display: flex;
+   
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1.5rem;
+    padding: 0;
+    background-color: var(--background);
+}
+
+.logo {
+    margin-left: 1rem;
+    width: 4rem;
+    height: 3rem;
+    cursor: pointer;
+    isolation: isolate;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+                    
+.navigation > li {
+  display: flex;
+  position: relative;
+  padding: 0;
+  color: white;
+  cursor: pointer;
+  width: max-content;
+  transition: all 0.2s;
+}
+
+.navigation > li:hover {
+    color: var(--primary)
+}
+
+.navigation > li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.125rem;
+  bottom: -0.3rem;
+  left: 0;
+  background: linear-gradient(90deg, var(--background), var(--primary), var(--background));
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+
+.navigation > li:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+.navigation li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease-out;
+  
+}
+.navigation li a img{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 5px;
+}
+@media (min-width: 600px) {
+    .menu-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .navigation {
+        display: none;
+    }
+    .menu-icon {
+        display: block;
+    }
+
+    .navigation--mobile {
+        top: var(--navbar-height);
+        position: absolute;
+        right: 0; /* Alinea el menú móvil a la derecha */
+        display: flex;
+        padding: 1.25rem;
+        background-color: var(--background);
+        width: 40%;
+        height: calc(25vh - var(--navbar-height));
+        gap: 0.5rem;
+        flex-direction: column;
+        animation:slide-bottom 0.5s cubic-bezier(.25,.46,.45,.94) both
+    }
+}
