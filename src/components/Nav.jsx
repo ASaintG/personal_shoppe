@@ -47,7 +47,7 @@ const Nav =() =>{
                     <li><Link to='/subscribe'>Subscribe</Link></li>
                     <li>
                         <Link to='/cart'>Cart <img src="/src/assets/menu/shopping-cart.png" alt="" /> </Link></li>
-                    <li><a href="https://github.com/ASaintG">Source
+                    <li><a href="https://github.com/ASaintG/personal_shoppe">Source
                         <img src="/src/assets/menu/github-mark.png" alt="" />
                         </a></li>
                 </ul>
